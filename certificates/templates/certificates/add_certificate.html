@@ -1,0 +1,65 @@
+{% extends 'certificates/base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-success text-white">
+                <h3>Add Certificate</h3>
+            </div>
+
+            <div class="card-body">
+
+                <form method="POST" onsubmit="return validateForm()">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button type="submit"
+                            class="btn btn-success">
+                        Save Certificate
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function validateForm()
+{
+    let student =
+    document.getElementById("id_student_name").value;
+
+    let course =
+    document.getElementById("id_course").value;
+
+    if(student.trim() === "")
+    {
+        alert("Student Name Required");
+        return false;
+    }
+
+    if(course.trim() === "")
+    {
+        alert("Course Required");
+        return false;
+    }
+
+    return true;
+}
+
+</script>
+
+{% endblock %}

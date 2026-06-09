@@ -1,0 +1,91 @@
+{% extends 'certificates/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-5 border-primary">
+
+        <div class="card-body text-center p-5">
+
+            <h1 class="display-4 text-primary fw-bold">
+                Certificate of Completion
+            </h1>
+
+            <hr class="my-4">
+
+            <p class="fs-4">
+                This Certificate is Proudly Presented To
+            </p>
+
+            <h2 class="fw-bold text-dark my-4">
+                {{ certificate.student_name }}
+            </h2>
+
+            <p class="fs-5">
+                For Successfully Completing
+            </p>
+
+            <h3 class="text-success fw-bold mb-4">
+                {{ certificate.course }}
+            </h3>
+
+            <p class="fs-5">
+                Issued On:
+                <strong>{{ certificate.issue_date }}</strong>
+            </p>
+
+            <div class="row mt-5">
+
+                <div class="col-md-6 text-start">
+
+                    <hr>
+
+                    <h5>Course Instructor</h5>
+
+                    <p>
+                        Department of Computer Science
+                    </p>
+
+                </div>
+
+                <div class="col-md-6 text-end">
+
+                    <hr>
+
+                    <h3 style="
+                        font-family:'Brush Script MT',cursive;
+                        color:#0d6efd;
+                    ">
+                        Ibrar Ul Hassan Shami
+                    </h3>
+
+                    <p>
+                        Authorized Signature
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="mt-5">
+
+                <a href="{% url 'certificate_list' %}"
+                   class="btn btn-primary">
+                    Back to Certificates
+                </a>
+
+                <button onclick="window.print()"
+                        class="btn btn-success">
+                    Print Certificate
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

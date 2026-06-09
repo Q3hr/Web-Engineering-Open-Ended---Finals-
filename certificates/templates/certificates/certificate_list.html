@@ -1,0 +1,121 @@
+{% extends 'certificates/base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    All Certificates
+</h2>
+
+<form method="GET" class="mb-4">
+
+    <div class="row">
+
+        <div class="col-md-10">
+
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Search Student Name..."
+                value="{{ request.GET.search }}">
+
+        </div>
+
+        <div class="col-md-2">
+
+            <button
+                type="submit"
+                class="btn btn-primary w-100">
+
+                Search
+
+            </button>
+
+        </div>
+
+    </div>
+
+</form>
+
+<table class="table table-bordered table-striped shadow">
+
+    <thead class="table-dark">
+
+        <tr>
+            <th>Student Name</th>
+            <th>Course</th>
+            <th>Issue Date</th>
+            <th width="250">
+                Actions
+            </th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for certificate in certificates %}
+
+        <tr>
+
+            <td>
+                {{ certificate.student_name }}
+            </td>
+
+            <td>
+                {{ certificate.course }}
+            </td>
+
+            <td>
+                {{ certificate.issue_date }}
+            </td>
+
+            <td>
+
+                <a
+                    href="{% url 'certificate_view' certificate.id %}"
+                    class="btn btn-info btn-sm">
+
+                    View
+
+                </a>
+
+                <a
+                    href="{% url 'edit_certificate' certificate.id %}"
+                    class="btn btn-warning btn-sm">
+
+                    Edit
+
+                </a>
+
+                <a
+                    href="{% url 'delete_certificate' certificate.id %}"
+                    class="btn btn-danger btn-sm">
+
+                    Delete
+
+                </a>
+
+            </td>
+
+        </tr>
+
+    {% empty %}
+
+        <tr>
+
+            <td colspan="4" class="text-center">
+
+                No Certificates Found
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
